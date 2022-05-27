@@ -24,6 +24,7 @@ import { HomeComponent } from './views/home/home.component';
 //Esses imports são necessários para se trabalhar com pipe currency passando um currency expecifico.
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { ProductCrudComponent } from './components/product/product-crud/product-crud.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -34,6 +35,7 @@ registerLocaleData(localePt);
     FooterComponent,
     NavComponent,
     HomeComponent,
+    ProductCrudComponent,
   ],
 
   // É Sempre obrigatório declarar o modulo na lista de imports para que possamos ter acesso aos componentes daquele modulo.
@@ -47,6 +49,7 @@ registerLocaleData(localePt);
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatCardModule
   ],
 
   // Aqui na lista de providers eu declaro os serviços que serão expostos para fora do modulo
