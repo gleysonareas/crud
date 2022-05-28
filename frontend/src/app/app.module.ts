@@ -3,16 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// Imports Angular Material Module
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaterialModule } from './shared/material/material.module';
 
 // Imports Components
 import { AppComponent } from './app.component';
@@ -20,11 +12,16 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
+import { ProductCreateComponent } from './components/product/product-create/product-create.component';
+import { ProductCrudComponent } from './components/product/product-crud/product-crud.component';
 
 //Esses imports são necessários para se trabalhar com pipe currency passando um currency expecifico.
-import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { ProductCrudComponent } from './components/product/product-crud/product-crud.component';
+import { CommonModule, registerLocaleData } from '@angular/common';
+
+// Imports Diretivas
+import { RedDirective } from './directives/red.directive';
+import { ForDirective } from './directives/for.directive';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -36,8 +33,10 @@ registerLocaleData(localePt);
     NavComponent,
     HomeComponent,
     ProductCrudComponent,
+    RedDirective,
+    ForDirective,
+    ProductCreateComponent,
   ],
-
   // É Sempre obrigatório declarar o modulo na lista de imports para que possamos ter acesso aos componentes daquele modulo.
   imports: [
     FormsModule,
@@ -45,13 +44,8 @@ registerLocaleData(localePt);
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatCardModule,
-    MatCardModule
+    MaterialModule
   ],
-
   // Aqui na lista de providers eu declaro os serviços que serão expostos para fora do modulo
   // de forma que todo o restante da aplicação possa ter acesso a ele.
   providers: [{
