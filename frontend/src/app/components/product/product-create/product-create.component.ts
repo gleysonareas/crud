@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductModel } from 'src/app/shared/models/product.model';
 import { ProductService } from '../../../core/services/product.service';
 
 @Component({
@@ -8,6 +9,11 @@ import { ProductService } from '../../../core/services/product.service';
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent implements OnInit {
+
+  product: ProductModel = {
+    name: '',
+    price: null
+  };
 
   constructor(
     private productService: ProductService,
@@ -18,8 +24,12 @@ export class ProductCreateComponent implements OnInit {
 
   }
 
+  //Aqui ao chamar o serviço e solicitar uma criação, deve-se fazer um subscribe afim receber a resposta a qual o serviço traz do back.
   createProduct(): void {
-    this.productService.showMessage('Olá');
+    this.productService.create(this.product).subscribe(() => {
+      this.productService.showMessage('Produto cadastrado com sucesso');
+      this.router.navigate(['/products']);
+    })
   }
 
   cancel(): void {

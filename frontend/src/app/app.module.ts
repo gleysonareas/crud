@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
+import { HttpClientModule } from '@angular/common/http'
 
 // Imports Components
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 // Imports Diretivas
 import { RedDirective } from './directives/red.directive';
 import { ForDirective } from './directives/for.directive';
+import { ProductReadComponent } from './components/product/product-read/product-read.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -36,15 +38,18 @@ registerLocaleData(localePt);
     RedDirective,
     ForDirective,
     ProductCreateComponent,
+    ProductReadComponent
   ],
   // É Sempre obrigatório declarar o modulo na lista de imports para que possamos ter acesso aos componentes daquele modulo.
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   // Aqui na lista de providers eu declaro os serviços que serão expostos para fora do modulo
   // de forma que todo o restante da aplicação possa ter acesso a ele.

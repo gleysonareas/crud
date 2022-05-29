@@ -7,12 +7,17 @@
         {
             "id": 2,
             "name": "Notebook",
-            "price": 12000.00
+            "price": 12000
         },
         {
             "id": 3,
             "name": "Smartphone",
-            "price": 5000.00
+            "price": 5000
+        },
+        {
+            "name": "Monitor",
+            "price": 500,
+            "id": 4
         }
     ]
 }
