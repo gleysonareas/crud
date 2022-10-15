@@ -25,12 +25,31 @@ export class ProductService {
     });
   }
 
-  //Aqui será feita uma requisição e o serviço observa a solicitação afim de obter uma resposta quando ela chegar para retonar para o componente.
+  // Aqui será feita uma requisição e o serviço observa a
+  // solicitação afim de obter uma resposta quando ela
+  // chegar para retonar para o componente.
   create(product: ProductModel): Observable<ProductModel> {
-    return this.http.post<ProductModel>(`${this.baseApi}/products`, product);
+    const url = `${this.baseApi}/products`;
+    return this.http.post<ProductModel>(url, product);
   }
 
   read(): Observable<ProductModel[]> {
-    return this.http.get<ProductModel[]>(`${this.baseApi}/products`);
+    const url = `${this.baseApi}/products`;
+    return this.http.get<ProductModel[]>(url);
+  }
+
+  readById(id: string): Observable<ProductModel> {
+    const url = `${this.baseApi}/products/${id}`;
+    return this.http.get<ProductModel>(url);
+  }
+
+  update(product: ProductModel): Observable<ProductModel> {
+    const url = `${this.baseApi}/products/${product.id}`;
+    return this.http.put<ProductModel>(url, product);
+  }
+
+  delete(id: string): Observable<ProductModel> {
+    const url = `${this.baseApi}/products/${id}`;
+    return this.http.delete<ProductModel>(url);
   }
 }

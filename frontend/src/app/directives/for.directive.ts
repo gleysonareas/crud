@@ -6,7 +6,7 @@ import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angula
 // Este é um exemplo de diretiva extrutural
 export class ForDirective implements OnInit {
   @Input('myForEm')
-  numbers: number[] = [];
+  public numbers: number[] = [];
 
   // @Input('myForUsando')
   // texto: string = '';
@@ -18,7 +18,7 @@ export class ForDirective implements OnInit {
 
   ngOnInit(): void {
     for (let number of this.numbers) {
-      this.container.createEmbeddedView(this.template, {$implicit: number});
+      this.container.createEmbeddedView(this.template, { $implicit: number });
     }
   }
 

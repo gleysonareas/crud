@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 // Imports Components
 import { AppComponent } from './app.component';
@@ -16,7 +16,8 @@ import { HomeComponent } from './views/home/home.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { ProductCrudComponent } from './components/product/product-crud/product-crud.component';
 
-//Esses imports são necessários para se trabalhar com pipe currency passando um currency expecifico.
+// Esses imports são necessários para se trabalhar
+// com pipe currency passando um currency expecifico.
 import localePt from '@angular/common/locales/pt';
 import { CommonModule, registerLocaleData } from '@angular/common';
 
@@ -24,6 +25,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { RedDirective } from './directives/red.directive';
 import { ForDirective } from './directives/for.directive';
 import { ProductReadComponent } from './components/product/product-read/product-read.component';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -38,7 +40,8 @@ registerLocaleData(localePt);
     RedDirective,
     ForDirective,
     ProductCreateComponent,
-    ProductReadComponent
+    ProductReadComponent,
+    ProductUpdateComponent
   ],
   // É Sempre obrigatório declarar o modulo na lista de imports para que possamos ter acesso aos componentes daquele modulo.
   imports: [

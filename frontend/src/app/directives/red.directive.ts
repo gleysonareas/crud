@@ -4,7 +4,7 @@ import { Directive, ElementRef } from '@angular/core';
   selector: '[appRed]'
 })
 
-//Esse é um exemplo de diretiva de atributo
+// Esse é um exemplo de diretiva de atributo
 export class RedDirective {
 
   constructor(private el: ElementRef) {

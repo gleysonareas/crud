@@ -24,16 +24,18 @@ export class ProductCreateComponent implements OnInit {
 
   }
 
-  //Aqui ao chamar o serviço e solicitar uma criação, deve-se fazer um subscribe afim receber a resposta a qual o serviço traz do back.
+  // Aqui ao chamar o serviço e solicitar uma criação,
+  // deve-se fazer um subscribe afim receber a resposta a
+  // qual o serviço traz do back.
   createProduct(): void {
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage('Produto cadastrado com sucesso');
       this.router.navigate(['/products']);
-    })
+    });
   }
 
   cancel(): void {
-    this.router.navigate(['/products'])
+    this.router.navigate(['/products']);
   }
 
 }
