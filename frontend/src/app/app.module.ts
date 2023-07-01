@@ -32,27 +32,27 @@ registerLocaleData(localePt);
   /* Todo componente deve ser registrado aqui na lista de declarations do modulo para que ele possa ser utilizado.*/
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavComponent,
-    HomeComponent,
-    ProductCrudComponent,
     RedDirective,
     ForDirective,
-    ProductCreateComponent,
+    NavComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
     ProductReadComponent,
+    ProductCrudComponent,
+    ProductCreateComponent,
     ProductUpdateComponent
   ],
   // É Sempre obrigatório declarar o modulo na lista de imports para que possamos ter acesso aos componentes daquele modulo.
   imports: [
     FormsModule,
-    ReactiveFormsModule,
     CommonModule,
     BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   // Aqui na lista de providers eu declaro os serviços que serão expostos para fora do modulo
   // de forma que todo o restante da aplicação possa ter acesso a ele.
