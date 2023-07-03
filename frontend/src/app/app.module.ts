@@ -14,7 +14,7 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
-import { ProductCrudComponent } from './components/product/product-crud/product-crud.component';
+import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 
 // Esses imports são necessários para se trabalhar
 // com pipe currency passando um currency expecifico.
@@ -26,6 +26,7 @@ import { RedDirective } from './directives/red.directive';
 import { ForDirective } from './directives/for.directive';
 import { ProductReadComponent } from './components/product/product-read/product-read.component';
 import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -41,7 +42,8 @@ registerLocaleData(localePt);
     ProductReadComponent,
     ProductCrudComponent,
     ProductCreateComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    ProductDeleteComponent
   ],
   // É Sempre obrigatório declarar o modulo na lista de imports para que possamos ter acesso aos componentes daquele modulo.
   imports: [

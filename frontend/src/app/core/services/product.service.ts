@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { ProductModel } from 'src/app/shared/models/product.model';
 import { environment } from 'src/environments/environment';
 
@@ -17,11 +18,12 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  showMessage(msg: string): void {
+  showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: 'right',
-      verticalPosition: 'top'
+      verticalPosition: 'top',
+      panelClass: isError ? ['msg-error'] : ['msg-success']
     });
   }
 
@@ -30,26 +32,47 @@ export class ProductService {
   // chegar para retonar para o componente.
   create(product: ProductModel): Observable<ProductModel> {
     const url = `${this.baseApi}/products`;
-    return this.http.post<ProductModel>(url, product);
+    return this.http.post<ProductModel>(url, product).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandle(e))
+    );
   }
 
   read(): Observable<ProductModel[]> {
     const url = `${this.baseApi}/products`;
-    return this.http.get<ProductModel[]>(url);
+    return this.http.get<ProductModel[]>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandle(e))
+    );
   }
 
   readById(id: string): Observable<ProductModel> {
     const url = `${this.baseApi}/products/${id}`;
-    return this.http.get<ProductModel>(url);
+    return this.http.get<ProductModel>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandle(e))
+    );
   }
 
   update(product: ProductModel): Observable<ProductModel> {
     const url = `${this.baseApi}/products/${product.id}`;
-    return this.http.put<ProductModel>(url, product);
+    return this.http.put<ProductModel>(url, product).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandle(e))
+    );
   }
 
-  delete(id: string): Observable<ProductModel> {
+  delete(id: any): Observable<ProductModel> {
     const url = `${this.baseApi}/products/${id}`;
-    return this.http.delete<ProductModel>(url);
+    return this.http.delete<ProductModel>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandle(e))
+    );
+  }
+
+  errorHandle(e: any): Observable<any> {
+    console.log(e)
+    this.showMessage('Ocorreu um erro!', true)
+    return EMPTY
   }
 }
