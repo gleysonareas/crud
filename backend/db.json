@@ -24,6 +24,11 @@
       "name": "Mouse",
       "price": "25",
       "id": 5
+    },
+    {
+      "name": "webcam",
+      "price": "170",
+      "id": 6
     }
   ]
 }
